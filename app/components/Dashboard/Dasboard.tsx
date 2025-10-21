@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 export default function Dashboard(): React.ReactElement {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#e6f3ff] to-[#f7fbff] p-4 sm:p-10 font-sans text-slate-800">
-      <div className="max-w-[1200px] mx-auto bg-white/60 backdrop-blur rounded-[18px] border border-white/[.6] shadow-lg overflow-hidden">
+    <div className="min-h-screen lg:h-screen overflow-hidden bg-gradient-to-b from-[#e6f3ff] to-[#f7fbff] p-4 sm:p-8 font-sans text-slate-800">
+      <div className="max-w-[1200px] mx-auto h-full bg-white/60 backdrop-blur rounded-[18px] border border-white/[.6] shadow-lg overflow-hidden">
         <div className="flex flex-col md:flex-row">
           {/* Desktop sidebar */}
           <aside className="hidden md:flex md:w-20 bg-[#0f4c6b] text-white flex-col items-center py-6 space-y-6">
@@ -35,9 +35,11 @@ export default function Dashboard(): React.ReactElement {
             {/* Mobile topbar */}
             <div className="md:hidden flex items-center justify-between px-4 py-3 bg-white/50 border-b">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#0f4c6b] text-white rounded-lg flex items-center justify-center">
-                  🔷
-                </div>
+                <img
+                  src="/profile.jpeg"
+                  alt="profile"
+                  className="w-9 h-9 rounded-lg object-cover"
+                />
                 <div className="text-sm font-semibold">Dashboard</div>
               </div>
               <div className="flex items-center gap-3">
@@ -46,12 +48,12 @@ export default function Dashboard(): React.ReactElement {
               </div>
             </div>
 
-            <main className="p-6 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
+            <main className="p-4 h-full grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
               <section className="flex flex-col gap-6">
                 <div className="flex flex-col lg:flex-row items-start gap-6">
-                  <div className="w-full lg:w-[360px] h-auto bg-white/70 rounded-2xl border border-white/[.6] shadow-inner flex items-center justify-center p-4">
+                  <div className="w-full lg:w-[320px] h-auto bg-white/70 rounded-2xl border border-white/[.6] shadow-inner flex items-center justify-center p-3">
                     {/* Responsive video wrapper: keeps aspect ratio and fills available width */}
-                    <div className="w-full max-w-[300px]">
+                    <div className="w-full max-w-[240px]">
                       <div className="relative pb-[56.25%] md:pb-[56.25%] lg:pb-[56.25%] h-0 rounded-lg overflow-hidden bg-black">
                         <video
                           className="absolute inset-0 w-full h-full object-contain"
@@ -68,12 +70,12 @@ export default function Dashboard(): React.ReactElement {
                     </div>
                   </div>
 
-                  <div className="flex-1 flex flex-col gap-4 w-full">
+                  <div className="flex-1 flex flex-col gap-3 w-full">
                     <div className="mt-3">
                       <SteeringWheelCard />
                     </div>
 
-                    <div className="bg-white/70 rounded-2xl p-4 md:p-6 border border-white/[.6] shadow-sm">
+                    <div className="bg-white/70 rounded-2xl p-3 md:p-4 border border-white/[.6] shadow-sm">
                       <div className="flex items-center justify-between">
                         <h2 className="text-lg md:text-xl font-semibold">
                           Heart
@@ -107,7 +109,7 @@ export default function Dashboard(): React.ReactElement {
                           Heart Rate (BPM)
                         </div>
                         {/* Replace chart placeholder with responsive video from provided URL */}
-                        <div className="w-full h-50 md:h-54 bg-gradient-to-r from-[#fff] to-[#f3fbff] rounded-lg overflow-hidden">
+                        <div className="w-full h-40 md:h-44 bg-gradient-to-r from-[#fff] to-[#f3fbff] rounded-lg overflow-hidden">
                           <video
                             className="w-full h-full object-cover"
                             src="https://www.pexels.com/download/video/855944/"
@@ -123,17 +125,16 @@ export default function Dashboard(): React.ReactElement {
                     </div>
 
                     <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
+                      <div className="p-2 bg-white/70 rounded-2xl border border-white/[.6]">
                         My Heart
                       </div>
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
+                      <div className="p-2 bg-white/70 rounded-2xl border border-white/[.6]">
                         Lungs
                       </div>
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
+                      <div className="p-2 bg-white/70 rounded-2xl border border-white/[.6]">
                         Stomach
                       </div>
                     </div>
-
                   </div>
                 </div>
               </section>
@@ -147,7 +148,11 @@ export default function Dashboard(): React.ReactElement {
                         Blood: O+ • Male • 28 years
                       </div>
                     </div>
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-slate-200 rounded-full" />
+                    <img
+                      src="/profile.jpg"
+                      alt="profile"
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
+                    />
                   </div>
 
                   <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm text-slate-600">
@@ -278,12 +283,14 @@ function SteeringMonitor(): React.ReactElement {
 function SteeringWheelCard(): React.ReactElement {
   const [angle, setAngle] = useState<number>(0);
   const [rate, setRate] = useState<number>(0);
-  const [lastUpdate, setLastUpdate] = useState<string>(() =>
-    new Date().toLocaleTimeString()
-  );
+  // Start empty to keep server/client render identical. Fill on mount.
+  const [lastUpdate, setLastUpdate] = useState<string>("");
 
   useEffect(() => {
     // Smooth updates every 120ms to animate rotation; small random walk
+    // Set an initial timestamp on mount (client-only) to avoid SSR/CSR mismatch
+    setLastUpdate(new Date().toLocaleTimeString());
+
     let prev = 0;
     const iv = setInterval(() => {
       const next = Math.max(
@@ -321,7 +328,7 @@ function SteeringWheelCard(): React.ReactElement {
           </div>
         </div>
 
-        <div className="flex-1 w-full">
+        <div className="flex-1 w-full min-w-0">
           <div className="grid grid-cols-3 gap-3 text-center">
             <div className="p-3 bg-white rounded-lg">
               <div className="text-xs text-slate-500">Angle</div>
@@ -329,7 +336,9 @@ function SteeringWheelCard(): React.ReactElement {
             </div>
             <div className="p-3 bg-white rounded-lg">
               <div className="text-xs text-slate-500">Rate</div>
-              <div className="text-lg font-semibold">{rate}°/tick</div>
+              <div className="text-lg font-semibold whitespace-nowrap">
+                {rate}°/s
+              </div>
             </div>
             <div className="p-3 bg-white rounded-lg">
               <div className="text-xs text-slate-500">Last</div>
