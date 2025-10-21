@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 
 export default function DrivWellLanding() {
   const [isHovered, setIsHovered] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-slate-900 to-black text-slate-100">
@@ -33,8 +33,9 @@ export default function DrivWellLanding() {
             </span>
           </div>
           <button
-          onClick={() => router.push('/pages/dashboard')}
-          className="px-6 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg font-semibold hover:shadow-lg hover:shadow-black/60 transition-all duration-300 hover:scale-105">
+            onClick={() => router.push("/pages/dashboard")}
+            className="px-6 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg font-semibold hover:shadow-lg hover:shadow-black/60 transition-all duration-300 hover:scale-105"
+          >
             Login
           </button>
         </div>
@@ -64,13 +65,21 @@ export default function DrivWellLanding() {
 
             <div className="flex flex-wrap gap-4 justify-center">
               <button
+                onClick={() =>
+                  router.push("/pages/dashboard")
+                }
                 className="px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 hover:scale-105"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
                 Get Started
               </button>
-              <button className="px-8 py-4 bg-slate-900/60 border border-slate-700 rounded-xl font-semibold text-lg hover:bg-slate-800/60 transition-all duration-300">
+              <button
+                onClick={() =>
+                  router.push("https://todo-app-omega-six-61.vercel.app")
+                }
+                className="px-8 py-4 bg-slate-900/60 border border-slate-700 rounded-xl font-semibold text-lg hover:bg-slate-800/60 transition-all duration-300"
+              >
                 Watch Demo
               </button>
             </div>
@@ -213,7 +222,12 @@ export default function DrivWellLanding() {
           <p className="text-xl text-slate-300 mb-10">
             Join the future of proactive driver wellness monitoring
           </p>
-          <button className="px-10 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 hover:scale-105">
+          <button
+            onClick={() =>
+              router.push("/pages/dashboard")
+            }
+            className="px-10 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 hover:scale-105"
+          >
             Start Free Trial
           </button>
         </div>
