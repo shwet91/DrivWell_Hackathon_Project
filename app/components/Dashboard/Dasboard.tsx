@@ -1,6 +1,11 @@
+"use client";
+
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard(): React.ReactElement {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#e6f3ff] to-[#f7fbff] p-4 sm:p-10 font-sans text-slate-800">
       <div className="max-w-[1200px] mx-auto bg-white/60 backdrop-blur rounded-[18px] border border-white/[.6] shadow-lg overflow-hidden">
@@ -48,9 +53,9 @@ export default function Dashboard(): React.ReactElement {
                   <div className="w-full lg:w-[360px] h-auto bg-white/70 rounded-2xl border border-white/[.6] shadow-inner flex items-center justify-center p-4">
                     {/* Responsive video wrapper: keeps aspect ratio and fills available width */}
                     <div className="w-full max-w-[300px]">
-                      <div className="relative pb-[177%] md:pb-[160%] lg:pb-[150%] h-0 rounded-lg overflow-hidden bg-black">
+                      <div className="relative pb-[56.25%] md:pb-[56.25%] lg:pb-[56.25%] h-0 rounded-lg overflow-hidden bg-black">
                         <video
-                          className="absolute inset-0 w-full h-full object-cover"
+                          className="absolute inset-0 w-full h-full object-contain"
                           autoPlay
                           muted
                           loop
@@ -164,6 +169,15 @@ export default function Dashboard(): React.ReactElement {
                       <div className="text-xs text-slate-500">x1</div>
                     </div>
                   </div>
+
+                  {/* Booking button placed below medication list */}
+                  <div className="mt-4">
+                    <button
+                    onClick={() => router.push('https://todo-app-omega-six-61.vercel.app')}
+                    className="w-full text-sm bg-sky-600 text-white px-4 py-2 rounded-md">
+                      Try It Now
+                    </button>
+                  </div>
                 </div>
               </aside>
             </main>
@@ -173,6 +187,4 @@ export default function Dashboard(): React.ReactElement {
     </div>
   );
 }
-<button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-  Book
-</button>;
+// stray button removed
