@@ -55,10 +55,10 @@ export default function Dashboard(): React.ReactElement {
                           muted
                           loop
                           playsInline
+                          preload="auto"
                           poster="/video-poster.jpg"
                         >
                           <source src="/body.mp4" type="video/mp4" />
-                          Your browser does not support the video tag.
                         </video>
                       </div>
                     </div>
