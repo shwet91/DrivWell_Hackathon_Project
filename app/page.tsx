@@ -1,243 +1,240 @@
-import React from "react";
+"use client";
 
-export default function Home(): React.ReactElement {
+import { useState } from "react";
+import {
+  AlertCircle,
+  Activity,
+  Eye,
+  Gauge,
+  Brain,
+  Shield,
+  TrendingUp,
+  Users,
+  Smartphone,
+  Cloud,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+
+export default function DrivWellLanding() {
+  const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter()
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#e6f3ff] to-[#f7fbff] p-4 sm:p-10 font-sans text-slate-800">
-      <div className="max-w-[1200px] mx-auto bg-white/60 backdrop-blur rounded-[18px] border border-white/[.6] shadow-lg overflow-hidden">
-        <div className="flex flex-col md:flex-row">
-          {/* Desktop sidebar */}
-          <aside className="hidden md:flex md:w-20 bg-[#0f4c6b] text-white flex-col items-center py-6 space-y-6">
-            <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-              🔷
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-slate-900 to-black text-slate-100">
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-black/70 backdrop-blur-lg border-b border-slate-700">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg flex items-center justify-center">
+              <Activity className="w-6 h-6" />
             </div>
-            <nav className="flex-1 flex flex-col items-center justify-center space-y-6">
-              <button className="w-10 h-10 text-white/80 hover:text-white">
-                🏠
-              </button>
-              <button className="w-10 h-10 text-white/80 hover:text-white">
-                🧬
-              </button>
-              <button className="w-10 h-10 text-white/80 hover:text-white">
-                💊
-              </button>
-              <button className="w-10 h-10 text-white/80 hover:text-white">
-                ⚙️
-              </button>
-            </nav>
-            <div className="w-10 h-10 bg-white/8 rounded-full" />
-          </aside>
+            <span className="text-2xl font-bold text-slate-100">
+              DrivWell AI
+            </span>
+          </div>
+          <button
+          onClick={() => router.push('/pages/dashboard')}
+          className="px-6 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg font-semibold hover:shadow-lg hover:shadow-black/60 transition-all duration-300 hover:scale-105">
+            Login
+          </button>
+        </div>
+      </nav>
 
-          <div className="flex-1">
-            {/* Mobile topbar */}
-            <div className="md:hidden flex items-center justify-between px-4 py-3 bg-white/50 border-b">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#0f4c6b] text-white rounded-lg flex items-center justify-center">
-                  🔷
-                </div>
-                <div className="text-sm font-semibold">Dashboard</div>
-              </div>
-              <div className="flex items-center gap-3">
-                <button className="text-slate-600">🔔</button>
-                <div className="w-8 h-8 bg-slate-200 rounded-full" />
-              </div>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 rounded-full mb-6 border border-blue-400/30">
+              <Shield className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm text-slate-300">
+                i.Mobilothon 5.0 by Team CodeMechanix
+              </span>
             </div>
 
-            <main className="p-6 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
-              <section className="flex flex-col gap-6">
-                <div className="flex flex-col lg:flex-row items-start gap-6">
-                  <div className="w-full lg:w-[360px] h-auto bg-white/70 rounded-2xl border border-white/[.6] shadow-inner flex items-center justify-center p-4">
-                    <svg
-                      className="w-full max-w-[300px] h-auto"
-                      viewBox="0 0 280 480"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g opacity={0.95}>
-                        <rect
-                          x="0"
-                          y="0"
-                          width="280"
-                          height="480"
-                          rx="20"
-                          fill="transparent"
-                        />
-                        <g transform="translate(40,20) scale(0.8)">
-                          <ellipse
-                            cx="100"
-                            cy="240"
-                            rx="70"
-                            ry="120"
-                            fill="#f8d7da"
-                            stroke="#e06b6b"
-                            strokeWidth={2}
-                          />
-                          <rect
-                            x="70"
-                            y="110"
-                            width="60"
-                            height="80"
-                            rx="30"
-                            fill="#f8d7da"
-                          />
-                          <path
-                            d="M80 30 C90 10, 110 10, 120 30 L120 60 C110 80, 90 80, 80 60 Z"
-                            fill="#f4b0b0"
-                          />
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-slate-100">Drive Safer</span>
+              <br />
+              <span className="text-slate-300">With AI Wellness</span>
+            </h1>
 
-                  <div className="flex-1 flex flex-col gap-4 w-full">
-                    <div className="bg-white/70 rounded-2xl p-4 md:p-6 border border-white/[.6] shadow-sm">
-                      <div className="flex items-center justify-between">
-                        <h2 className="text-lg md:text-xl font-semibold">
-                          Heart
-                        </h2>
-                        <div className="text-xs md:text-sm text-slate-500">
-                          19 September, 2023 | 3:45 PM
-                        </div>
-                      </div>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Real-time AI monitoring that detects fatigue and stress before
+              accidents happen. Proactive driver wellness for safer roads.
+            </p>
 
-                      <div className="mt-3 md:mt-4 grid grid-cols-2 gap-3 md:gap-4">
-                        <div className="p-2 md:p-3 bg-white rounded-lg shadow-sm">
-                          <div className="text-[11px] md:text-xs text-slate-500">
-                            Blood Pressure
-                          </div>
-                          <div className="text-sm md:text-lg font-semibold">
-                            120/80 mmHG
-                          </div>
-                        </div>
-                        <div className="p-2 md:p-3 bg-white rounded-lg shadow-sm">
-                          <div className="text-[11px] md:text-xs text-slate-500">
-                            Heart Rate
-                          </div>
-                          <div className="text-sm md:text-lg font-semibold text-rose-600">
-                            80 BPM
-                          </div>
-                        </div>
-                      </div>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <button
+                className="px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 hover:scale-105"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                Get Started
+              </button>
+              <button className="px-8 py-4 bg-slate-900/60 border border-slate-700 rounded-xl font-semibold text-lg hover:bg-slate-800/60 transition-all duration-300">
+                Watch Demo
+              </button>
+            </div>
+          </div>
 
-                      <div className="mt-4 md:mt-6">
-                        <div className="text-[11px] md:text-xs text-slate-500 mb-2">
-                          Heart Rate (BPM)
-                        </div>
-                        <div className="w-full h-20 md:h-24 bg-gradient-to-r from-[#fff] to-[#f3fbff] rounded-lg flex items-center justify-center text-slate-400">
-                          [Chart]
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
-                        My Heart
-                      </div>
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
-                        Lungs
-                      </div>
-                      <div className="p-3 bg-white/70 rounded-2xl border border-white/[.6]">
-                        Stomach
-                      </div>
-                    </div>
-                  </div>
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+            {[
+              { icon: Eye, label: "Visual Monitoring", value: "Real-Time" },
+              {
+                icon: Activity,
+                label: "Physiological Tracking",
+                value: "Multi-Modal",
+              },
+              { icon: Brain, label: "AI Predictions", value: "Proactive" },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="bg-gray-900/70 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-slate-500 transition-all duration-300 hover:transform hover:scale-105"
+              >
+                <stat.icon className="w-8 h-8 text-sky-400 mb-3" />
+                <div className="text-3xl font-bold text-slate-100 mb-1">
+                  {stat.value}
                 </div>
-              </section>
-
-              <aside className="w-full lg:w-[360px]">
-                <div className="bg-white/70 rounded-2xl p-4 md:p-6 border border-white/[.6] mb-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-sm text-slate-500">Peter James</h3>
-                      <div className="text-xs text-slate-600">
-                        Blood: O+ • Male • 28 years
-                      </div>
-                    </div>
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-slate-200 rounded-full" />
-                  </div>
-
-                  <div className="mt-3 grid grid-cols-2 gap-2 text-xs md:text-sm text-slate-600">
-                    <div>Height: 163cm</div>
-                    <div>Weight: 68kg</div>
-                    <div>BMI: 25.6</div>
-                    <div>—</div>
-                  </div>
-                </div>
-
-                <div className="bg-white/60 rounded-2xl p-4 md:p-6 border border-white/[.6] mb-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold">Consulting Doctor</h4>
-                    <a className="text-xs text-sky-600">See all</a>
-                  </div>
-
-                  <ul className="mt-3 space-y-3">
-                    <li className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-200" />
-                        <div>
-                          <div className="text-sm font-medium">
-                            Dr. Adward Pitter
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            Cardiac Surgeon
-                          </div>
-                        </div>
-                      </div>
-                      <button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-                        Book
-                      </button>
-                    </li>
-
-                    <li className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-200" />
-                        <div>
-                          <div className="text-sm font-medium">
-                            Dr. Liza Paul
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            Consultant Cardiologist
-                          </div>
-                        </div>
-                      </div>
-                      <button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-                        Book
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-white/60 rounded-2xl p-4 md:p-6 border border-white/[.6]">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold">Medication</h4>
-                    <a className="text-xs text-slate-600">See all</a>
-                  </div>
-
-                  <div className="mt-3 space-y-3 text-sm">
-                    <div className="flex items-center justify-between bg-white rounded-lg p-3">
-                      <div>
-                        <div className="font-medium">v-C 123 Foretin</div>
-                        <div className="text-xs text-slate-500">125mg</div>
-                      </div>
-                      <div className="text-xs text-slate-500">x2</div>
-                    </div>
-
-                    <div className="flex items-center justify-between bg-white rounded-lg p-3">
-                      <div>
-                        <div className="font-medium">Biotin</div>
-                        <div className="text-xs text-slate-500">15mg</div>
-                      </div>
-                      <div className="text-xs text-slate-500">x1</div>
-                    </div>
-                  </div>
-                </div>
-              </aside>
-            </main>
+                <div className="text-slate-400">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-6 bg-transparent">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span className="text-slate-100">Smart Features</span>
+          </h2>
+          <p className="text-center text-slate-400 mb-16 text-lg">
+            Multi-modal AI monitoring for comprehensive driver safety
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Eye,
+                title: "Visual Detection",
+                desc: "Monitors yawning, eye closure, and facial stress through cabin video",
+              },
+              {
+                icon: Gauge,
+                title: "Steering Analysis",
+                desc: "Tracks erratic steering patterns and lane deviations",
+              },
+              {
+                icon: Activity,
+                title: "Wearable Integration",
+                desc: "Optional heart rate and physiological stress monitoring",
+              },
+              {
+                icon: AlertCircle,
+                title: "Smart Alerts",
+                desc: "Non-distracting audio, visual, and haptic notifications",
+              },
+              {
+                icon: TrendingUp,
+                title: "Personalized AI",
+                desc: "Learns individual patterns for optimized interventions",
+              },
+              {
+                icon: Cloud,
+                title: "Cloud Dashboard",
+                desc: "Fleet monitoring, insights, and OTA model updates",
+              },
+            ].map((feature, i) => (
+              <div
+                key={i}
+                className="bg-gray-900/60 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-slate-500 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg hover:shadow-black/50"
+              >
+                <div className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center mb-4 border border-slate-700">
+                  <feature.icon className="w-6 h-6 text-sky-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-slate-100">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-400 leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            <span className="text-slate-100">How It Works</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                num: "01",
+                title: "Monitor",
+                desc: "Multi-modal sensors capture visual, behavioral, and physiological data in real-time",
+              },
+              {
+                num: "02",
+                title: "Analyze",
+                desc: "Edge AI processes data locally to detect fatigue and stress patterns instantly",
+              },
+              {
+                num: "03",
+                title: "Intervene",
+                desc: "Gentle alerts and break suggestions prevent accidents before they happen",
+              },
+            ].map((step, i) => (
+              <div key={i} className="relative">
+                <div className="text-6xl font-bold text-slate-800/20 mb-4">
+                  {step.num}
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-100">
+                  {step.title}
+                </h3>
+                <p className="text-slate-400 leading-relaxed">{step.desc}</p>
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-12 right-[-2rem] w-16 h-0.5 bg-gradient-to-r from-slate-600 to-transparent"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-black/40 to-slate-900/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Transform Driver Safety?
+          </h2>
+          <p className="text-xl text-slate-300 mb-10">
+            Join the future of proactive driver wellness monitoring
+          </p>
+          <button className="px-10 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-black/60 transition-all duration-300 hover:scale-105">
+            Start Free Trial
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
+              <Activity className="w-5 h-5 text-slate-100" />
+            </div>
+            <span className="font-bold text-lg text-slate-100">
+              DrivWell AI
+            </span>
+          </div>
+          <div className="text-slate-400 text-sm">
+            © 2024 Team CodeMechanix. Built for i.Mobilothon 5.0
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
-<button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-  Book
-</button>;
