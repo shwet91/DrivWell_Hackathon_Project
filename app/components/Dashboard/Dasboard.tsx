@@ -46,46 +46,22 @@ export default function Dashboard(): React.ReactElement {
               <section className="flex flex-col gap-6">
                 <div className="flex flex-col lg:flex-row items-start gap-6">
                   <div className="w-full lg:w-[360px] h-auto bg-white/70 rounded-2xl border border-white/[.6] shadow-inner flex items-center justify-center p-4">
-                    <svg
-                      className="w-full max-w-[300px] h-auto"
-                      viewBox="0 0 280 480"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g opacity={0.95}>
-                        <rect
-                          x="0"
-                          y="0"
-                          width="280"
-                          height="480"
-                          rx="20"
-                          fill="transparent"
-                        />
-                        <g transform="translate(40,20) scale(0.8)">
-                          <ellipse
-                            cx="100"
-                            cy="240"
-                            rx="70"
-                            ry="120"
-                            fill="#f8d7da"
-                            stroke="#e06b6b"
-                            strokeWidth={2}
-                          />
-                          <rect
-                            x="70"
-                            y="110"
-                            width="60"
-                            height="80"
-                            rx="30"
-                            fill="#f8d7da"
-                          />
-                          <path
-                            d="M80 30 C90 10, 110 10, 120 30 L120 60 C110 80, 90 80, 80 60 Z"
-                            fill="#f4b0b0"
-                          />
-                        </g>
-                      </g>
-                    </svg>
+                    {/* Responsive video wrapper: keeps aspect ratio and fills available width */}
+                    <div className="w-full max-w-[300px]">
+                      <div className="relative pb-[177%] md:pb-[160%] lg:pb-[150%] h-0 rounded-lg overflow-hidden bg-black">
+                        <video
+                          className="absolute inset-0 w-full h-full object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          poster="/video-poster.jpg"
+                        >
+                          <source src="/body.mp4" type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex-1 flex flex-col gap-4 w-full">
@@ -163,48 +139,7 @@ export default function Dashboard(): React.ReactElement {
                   </div>
                 </div>
 
-                <div className="bg-white/60 rounded-2xl p-4 md:p-6 border border-white/[.6] mb-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold">Consulting Doctor</h4>
-                    <a className="text-xs text-sky-600">See all</a>
-                  </div>
-
-                  <ul className="mt-3 space-y-3">
-                    <li className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-200" />
-                        <div>
-                          <div className="text-sm font-medium">
-                            Dr. Adward Pitter
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            Cardiac Surgeon
-                          </div>
-                        </div>
-                      </div>
-                      <button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-                        Book
-                      </button>
-                    </li>
-
-                    <li className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-slate-200" />
-                        <div>
-                          <div className="text-sm font-medium">
-                            Dr. Liza Paul
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            Consultant Cardiologist
-                          </div>
-                        </div>
-                      </div>
-                      <button className="text-sm bg-sky-600 text-white px-3 py-1 rounded-full">
-                        Book
-                      </button>
-                    </li>
-                  </ul>
-                </div>
+                {/* Consulting Doctor section removed as requested */}
 
                 <div className="bg-white/60 rounded-2xl p-4 md:p-6 border border-white/[.6]">
                   <div className="flex items-center justify-between">
