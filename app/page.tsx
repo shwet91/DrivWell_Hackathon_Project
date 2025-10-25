@@ -76,7 +76,7 @@ export default function DrivWellLanding() {
               </button>
               <button
                 onClick={() =>
-                  router.push("https://todo-app-omega-six-61.vercel.app")
+                  router.push("https://driv-well-ai.vercel.app")
                 }
                 className="px-8 py-4 bg-slate-900/60 border border-slate-700 rounded-xl font-semibold text-lg hover:bg-slate-800/60 transition-all duration-300"
               >
